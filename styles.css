@@ -1,0 +1,556 @@
+:root {
+  color-scheme: dark;
+  --bg: #111315;
+  --surface: #191d20;
+  --panel: #202529;
+  --panel-2: #252b30;
+  --text: #edf2f4;
+  --muted: #93a1a8;
+  --line: #30383e;
+  --accent: #60d394;
+  --accent-2: #5aa9e6;
+  --warn: #f7b267;
+  --danger: #ef6f6c;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+}
+
+body.light {
+  color-scheme: light;
+  --bg: #f5f7f8;
+  --surface: #ffffff;
+  --panel: #ffffff;
+  --panel-2: #eef3f4;
+  --text: #142024;
+  --muted: #617177;
+  --line: #dbe3e6;
+  --shadow: 0 20px 70px rgba(24, 43, 51, 0.11);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  min-width: 0;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 28px 22px;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.brand {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #081010;
+  font-weight: 900;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.brand h1 {
+  font-size: 20px;
+}
+
+.eyebrow {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.nav-list {
+  display: grid;
+  gap: 8px;
+}
+
+.nav-list a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 11px 12px;
+  border-radius: 8px;
+}
+
+.nav-list a.active,
+.nav-list a:hover {
+  color: var(--text);
+  background: var(--panel-2);
+}
+
+.theme-toggle,
+.ghost-button,
+.primary-button {
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.theme-toggle {
+  margin-top: auto;
+  width: 44px;
+  height: 44px;
+  background: var(--panel);
+}
+
+main {
+  padding: 30px;
+  display: grid;
+  gap: 28px;
+}
+
+.topbar,
+.section-heading,
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.topbar h2,
+.section-heading h2 {
+  margin-top: 6px;
+  font-size: clamp(25px, 4vw, 44px);
+  line-height: 1.1;
+}
+
+.month-chip,
+.panel-heading span {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.section {
+  display: grid;
+  gap: 18px;
+}
+
+.summary-grid,
+.budget-grid,
+.analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.metric,
+.panel,
+.budget-card,
+.signal-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.metric {
+  min-height: 118px;
+  padding: 20px;
+  display: grid;
+  align-content: space-between;
+}
+
+.metric span,
+.asset-stack span,
+.list-meta,
+label {
+  color: var(--muted);
+}
+
+.metric strong {
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1;
+}
+
+.positive strong {
+  color: var(--accent);
+}
+
+.negative strong {
+  color: var(--danger);
+}
+
+.accent strong {
+  color: var(--accent-2);
+}
+
+.dashboard-grid,
+.two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 18px;
+}
+
+.panel {
+  padding: 20px;
+}
+
+.panel-heading h3 {
+  font-size: 18px;
+}
+
+.asset-stack {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.asset-stack div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 8px;
+  background: var(--panel-2);
+}
+
+.asset-value-panel {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.asset-value-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.asset-value-summary div {
+  display: grid;
+  gap: 6px;
+  min-height: 82px;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--panel-2);
+}
+
+.asset-value-summary span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.asset-value-summary strong {
+  align-self: end;
+  overflow-wrap: anywhere;
+}
+
+.asset-value-list {
+  display: grid;
+  gap: 10px;
+}
+
+.asset-value-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(140px, 0.9fr);
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.asset-value-main,
+.asset-value-meter,
+.list-side {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.asset-value-meter span,
+.list-side {
+  text-align: right;
+}
+
+.budget-card,
+.signal-card {
+  padding: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.budget-title,
+.signal-title,
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.progress-shell {
+  height: 14px;
+  border-radius: 999px;
+  background: var(--panel-2);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+.progress-fill.warn {
+  background: var(--warn);
+}
+
+.progress-fill.danger {
+  background: var(--danger);
+}
+
+.ghost-button {
+  background: transparent;
+  padding: 10px 14px;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #07100e;
+  font-weight: 800;
+  padding: 12px 16px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hidden {
+  display: none;
+}
+
+.form-panel {
+  display: grid;
+  gap: 14px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  min-width: 0;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-2);
+  color: var(--text);
+  padding: 10px 12px;
+}
+
+input[type="range"] {
+  padding-inline: 0;
+  width: calc(100% - 2px);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.segmented label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-2);
+  color: var(--text);
+}
+
+.segmented input {
+  width: auto;
+  min-height: auto;
+  margin-right: 8px;
+}
+
+.rating-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.list-item {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-2);
+}
+
+.item-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.item-actions button {
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.list-main {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.list-main strong,
+.list-meta {
+  overflow-wrap: anywhere;
+}
+
+.amount-income {
+  color: var(--accent);
+}
+
+.amount-expense {
+  color: var(--danger);
+}
+
+.signal-card strong {
+  font-size: 30px;
+}
+
+@media (max-width: 1080px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+  }
+
+  .nav-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .nav-list a {
+    text-align: center;
+  }
+
+  .summary-grid,
+  .budget-grid,
+  .analysis-grid,
+  .asset-value-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-grid,
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  main,
+  .sidebar {
+    padding: 18px;
+  }
+
+  .topbar,
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .nav-list,
+  .summary-grid,
+  .budget-grid,
+  .analysis-grid,
+  .rating-row,
+  .asset-value-summary,
+  .asset-value-row {
+    grid-template-columns: 1fr;
+  }
+
+  .list-item,
+  .budget-title,
+  .signal-title {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .list-side,
+  .asset-value-meter span {
+    text-align: left;
+  }
+
+  .item-actions {
+    justify-content: flex-start;
+  }
+}
